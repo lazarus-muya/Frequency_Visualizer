@@ -142,16 +142,14 @@ function animate() {
 const sampleRateInput = document.getElementById('sampleRate');
 const durationInput = document.getElementById('duration');
 const frequencySlider = document.getElementById('frequency');
+const frequencyInput = document.getElementById('frequencyInput');
 const freqValue = document.getElementById('freqValue');
 const modeInfo = document.getElementById('modeInfo');
 const playPauseBtn = document.getElementById('playPause');
 const statusIndicator = document.getElementById('statusIndicator');
 
-// Sidenav controls
-const navToggle = document.getElementById('navToggle');
+// Controls reference
 const sidenav = document.getElementById('sidenav');
-const closeNav = document.getElementById('closeNav');
-const overlay = document.getElementById('overlay');
 
 function showStatus(message) {
     isUpdating = true;
@@ -163,41 +161,6 @@ function hideStatus() {
     isUpdating = false;
     statusIndicator.style.display = 'none';
 }
-
-// Sidenav toggle functions
-function openSidenav() {
-    sidenav.classList.add('open');
-    overlay.classList.add('active');
-    navToggle.classList.add('open');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeSidenav() {
-    sidenav.classList.remove('open');
-    overlay.classList.remove('active');
-    navToggle.classList.remove('open');
-    document.body.style.overflow = '';
-}
-
-function toggleSidenav() {
-    if (sidenav.classList.contains('open')) {
-        closeSidenav();
-    } else {
-        openSidenav();
-    }
-}
-
-// Sidenav event listeners
-navToggle.addEventListener('click', toggleSidenav);
-closeNav.addEventListener('click', closeSidenav);
-overlay.addEventListener('click', closeSidenav);
-
-// Close sidenav on escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && sidenav.classList.contains('open')) {
-        closeSidenav();
-    }
-});
 
 sampleRateInput.addEventListener('change', (e) => {
     let value = parseInt(e.target.value);
@@ -230,6 +193,36 @@ durationInput.addEventListener('input', (e) => {
 frequencySlider.addEventListener('input', (e) => {
     frequency = parseInt(e.target.value);
     freqValue.textContent = `${frequency} Hz`;
+    frequencyInput.value = frequency; // Sync with input field
+    
+    const { m, n } = freqToModes(frequency);
+    modeInfo.textContent = `Modes: m=${m}, n=${n}`;
+    
+    if (oscillator && isPlaying) {
+        showStatus('Updating frequency...');
+        updateAudio();
+        setTimeout(hideStatus, 500); // Hide status after 500ms
+    }
+});
+
+// Frequency input field event listener
+frequencyInput.addEventListener('input', (e) => {
+    let value = parseInt(e.target.value);
+    
+    // Clamp values to slider bounds
+    value = Math.max(1, Math.min(22000, value));
+    
+    // Update the frequency variable
+    frequency = value;
+    
+    // Update the slider
+    frequencySlider.value = value;
+    
+    // Update the display
+    freqValue.textContent = `${frequency} Hz`;
+    
+    // Update the input field with clamped value
+    e.target.value = value;
     
     const { m, n } = freqToModes(frequency);
     modeInfo.textContent = `Modes: m=${m}, n=${n}`;
@@ -295,6 +288,7 @@ function init() {
     // Initialize input display values
     sampleRateInput.nextElementSibling.textContent = `${fs} Hz`;
     durationInput.nextElementSibling.textContent = `${duration}s`;
+    frequencyInput.value = frequency; // Initialize frequency input field
 }
 
 // Start when page loads

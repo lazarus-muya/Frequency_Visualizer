@@ -10,12 +10,7 @@
     <div class="container">
         <h1>Frequency Visualizer</h1>
         
-        <!-- Mobile Toggle Button -->
-        <button id="navToggle" class="nav-toggle">
-            <span class="hamburger"></span>
-            <span class="hamburger"></span>
-            <span class="hamburger"></span>
-        </button>
+
         
         <div class="main-content">
             <div class="canvas-section">
@@ -29,6 +24,11 @@
                         <label for="frequency">Frequency (Hz):</label>
                         <input type="range" id="frequency" min="1" max="22000" value="1400" step="1">
                         <span id="freqValue" class="frequency-display">1400 Hz</span>
+                    </div>
+                    
+                    <div class="frequency-input-container">
+                        <label for="frequencyInput">Enter Frequency (Hz):</label>
+                        <input type="number" id="frequencyInput" min="1" max="22000" value="1400" step="1">
                     </div>
                     
                     <div class="input-row">
@@ -53,35 +53,33 @@
                     <div id="modeInfo" class="mode-display">Modes: m=1, n=1</div>
                 </div>
             </div>
+        </div>
+        
+        <!-- Controls Section at Bottom -->
+        <div id="sidenav" class="sidenav">
+            <div class="sidenav-header">
+                <h3>Controls</h3>
+            </div>
             
-            <!-- Sidenav for Controls -->
-            <div id="sidenav" class="sidenav">
-                <div class="sidenav-header">
-                    <h3>Controls</h3>
-                    <button id="closeNav" class="close-nav">&times;</button>
-                </div>
+            <div class="controls">
                 
-                <div class="controls">
-                    
-                    <div id="statusIndicator" class="status-indicator" style="display: none;">
-                        <span class="status-text">Updating audio...</span>
-                    </div>
+                <div id="statusIndicator" class="status-indicator" style="display: none;">
+                    <span class="status-text">Updating audio...</span>
                 </div>
-                
-                <div class="instructions">
-                    <p><strong>Controls:</strong></p>
-                    <ul>
-                        <li><strong>Sample Rate:</strong> Choose from standard (44.1 kHz), professional (48 kHz), high-res (96 kHz), or ultra high-res (192 kHz) audio quality</li>
-                        <li><strong>Duration:</strong> Length of audio buffer - shorter = more responsive, longer = smoother</li>
-                        <li><strong>Frequency:</strong> Use the slider below the canvas to change frequency and see Chladni patterns form</li>
-                    </ul>
-                    <p>Use the slider below the canvas to change frequency • Click Play/Pause to control audio • Watch the particles form Chladni patterns</p>
-                </div>
+            </div>
+            
+            <div class="instructions">
+                <p><strong>Controls:</strong></p>
+                <ul>
+                    <li><strong>Sample Rate:</strong> Choose from standard (44.1 kHz), professional (48 kHz), high-res (96 kHz), or ultra high-resolution (192 kHz) audio quality</li>
+                    <li><strong>Duration:</strong> Length of audio buffer - shorter = more responsive, longer = smoother</li>
+                                            <li><strong>Frequency:</strong> Use the frequency slider above to change frequency and see Chladni patterns form</li>
+                </ul>
+                                    <p>Use the frequency slider above to change frequency • Click Play/Pause to control audio • Watch the particles form Chladni patterns</p>
             </div>
         </div>
         
-        <!-- Overlay for mobile -->
-        <div id="overlay" class="overlay"></div>
+
     </div>
     
     <script src="app.js"></script>

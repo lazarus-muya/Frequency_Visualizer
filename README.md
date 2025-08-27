@@ -12,6 +12,8 @@ A real-time interactive web application that demonstrates the fascinating world 
 - **Multiple Sample Rates**: Support for standard (44.1 kHz), professional (48 kHz), high-res (96 kHz), and ultra high-res (192 kHz) audio
 - **Responsive Design**: Works seamlessly on desktop and mobile devices
 - **Customizable Duration**: Adjustable audio buffer length for optimal performance
+- **Dual Frequency Control**: Both slider and direct input field for precise frequency adjustment
+- **Always-Visible Controls**: Controls section positioned at the bottom for easy access on all screen sizes
 - **Live Controls**: Real-time frequency adjustment with visual feedback
 
 ## 🎯 What is Cymatics?
@@ -20,7 +22,7 @@ Cymatics is the study of visible sound and vibration. When sound waves interact 
 
 ## 🚀 Live Demo
 
-Visit the live application: [Frequency Visualizer](https://yourusername.github.io/frequency_visualizer)
+Visit the live application: [Frequency Visualizer](https://lazarus-muya.github.io/Frequency_Visualizer/)
 
 ## 🛠️ Technologies Used
 
@@ -47,16 +49,18 @@ cd frequency_visualizer
 
 ### Basic Controls
 1. **Frequency Slider**: Adjust the frequency from 1 Hz to 22,000 Hz
-2. **Play/Pause Button**: Control audio playback
-3. **Sample Rate**: Choose audio quality (44.1 kHz to 192 kHz)
-4. **Duration**: Set audio buffer length (0.01s to 1.0s)
+2. **Frequency Input Field**: Type exact frequency values for precise control
+3. **Play/Pause Button**: Control audio playback
+4. **Sample Rate**: Choose audio quality (44.1 kHz to 192 kHz)
+5. **Duration**: Set audio buffer length (0.01s to 1.0s)
 
 ### How to Use
 1. Open `index.html` in a modern web browser
 2. Allow audio permissions when prompted
-3. Use the frequency slider to explore different frequencies
+3. Use the frequency slider or type exact values in the input field to explore different frequencies
 4. Watch particles form Chladni patterns in real-time
 5. Experiment with different sample rates and durations
+6. Access detailed controls and instructions at the bottom of the page
 
 ### Understanding the Patterns
 - **Low frequencies** (1-100 Hz): Simple, slow-moving patterns
@@ -71,6 +75,12 @@ cd frequency_visualizer
 - Configurable sample rates from 44.1 kHz to 192 kHz
 - Adjustable buffer duration for optimal performance
 - Volume-limited to 0.1 for comfortable listening
+
+### User Interface
+- Streamlined layout with controls section positioned at the bottom
+- Dual frequency control methods: slider and direct input field
+- Real-time synchronization between slider and input field
+- Input validation and value clamping for optimal user experience
 
 ### Particle System
 - 2000 particles with physics-based movement
@@ -90,14 +100,18 @@ The application calculates frequency modes (m, n) that determine the pattern for
 - ✅ Firefox 60+
 - ✅ Safari 11.1+
 - ✅ Edge 79+
+- ✅ Mobile browsers (iOS Safari, Chrome Mobile, Firefox Mobile)
 - ⚠️ Internet Explorer: Not supported
+
+**Note**: The application now features a simplified, always-accessible interface that works consistently across all supported browsers and devices.
 
 ## 📱 Mobile Support
 
 - Responsive design that works on all screen sizes
 - Touch-friendly controls for mobile devices
 - Optimized performance for mobile browsers
-- Collapsible navigation for small screens
+- Controls section always visible at the bottom for easy access
+- Optimized layout for both portrait and landscape orientations
 
 ## 🚀 Deployment
 
@@ -149,6 +163,21 @@ If you have questions or need help:
 - Check the browser console for error messages
 - Ensure your browser supports Web Audio API
 - Try refreshing the page if audio doesn't work
+
+## 🚀 Recent Updates
+
+### Latest Features (v2.0)
+- **Controls Section Relocation**: Moved controls section to the bottom of the page for better accessibility
+- **Frequency Input Field**: Added direct number input field for precise frequency control
+- **Bidirectional Sync**: Slider and input field automatically sync in real-time
+- **Improved Layout**: Streamlined design with better mobile responsiveness
+- **Enhanced UX**: Removed mobile navigation complexity for simpler, always-accessible controls
+
+### Previous Features
+- Real-time Chladni pattern visualization
+- Web Audio API integration
+- Responsive particle system
+- Multiple sample rate support
 
 ---
 
